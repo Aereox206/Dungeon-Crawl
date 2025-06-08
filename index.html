@@ -1,49 +1,163 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Unity Web Player | Dungeon Crawl</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+    <style>
+      section {
+        padding: 20px;
+        max-width: 1000px;
+        margin: auto;
+      }
+      h2 {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+      }
+      img {
+        margin: 5px;
+        border: 1px solid #ccc;
+      }
+      body {
+        font-family: sans-serif;
+        background: #f8f8f8;
+        color: #333;
+      }
+      #unity-container + * {
+        margin-top: 750px;
+      }
+    </style>
   </head>
   <body>
+    <header>
+      <nav>
+        <ul
+          style="display: flex; gap: 20px; list-style: none; padding: 10px; background: #222; color: white;"
+        >
+          <li><a href="#description" style="color:white;">Description</a></li>
+          <li><a href="#playtesting" style="color:white;">Playtesting</a></li>
+          <li><a href="#credits" style="color:white;">Credits</a></li>
+          <li><a href="#references" style="color:white;">References</a></li>
+          <li><a href="#screenshots" style="color:white;">Screenshots</a></li>
+          <li><a href="#trailer" style="color:white;">Trailer</a></li>
+          <li><a href="#presentations" style="color:white;">Presentations</a></li>
+          <li><a href="#team" style="color:white;">Team Reflection</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Unity game container - unchanged -->
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1400 height=600 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width="1400" height="600" tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"> </div>
+      <div id="unity-warning"></div>
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">Dungeon Crawl</div>
       </div>
     </div>
+
+    <!-- Non-game content sections -->
+    <hr />
+
+    <section id="description">
+      <h2>Description</h2>
+      <p>
+        Dungeon Crawl is a 2D puzzle platformer game inspired by similar games such as Fireboy and Watergirl and It Takes Two. Our game features in-depth and difficult puzzles, a powerup system, and a split-screen camera. It is free to play on this website as of June 8th.
+      </p>
+    </section>
+
+    <section id="playtesting">
+      <h2>Playtesting Reports</h2>
+      <div>
+        <img src="Screenshots/playtest 1.png" alt="Playtest Report 1" width="300" />
+        <img src="Screenshots/playtest 2.png" alt="Playtest Report 2" width="300" />
+        <img src="Screenshots/playtest 3.png" alt="Final Playtest Report" width="300" />
+      </div>
+      <p>
+        Playtests were conducted in class and at home by friends. In-class playtests gave us feedback in a google form, and at-home playtests gave us direct verbal feedback. 
+        After our final playtest, our main changes were bugfixes, specifically removing powerups after a checkpoint, having UI show on screen properly, and having gates between levels work properly. As for recommendations for future expansions, we would plan to make more puzzles throughout the main map, add sound effects, and add more enemies.
+      </p>
+    </section>
+
+    <section id="credits">
+      <h2>Credits</h2>
+      <p>
+        Diego Avilez - Programmer / Level Designer<br />
+        Steven Dohrman - Programmer / Level Designer<br />
+        Gisele Schulberg - Programmer / Art Designer
+      </p>
+    </section>
+
+    <section id="references">
+      <h2>References</h2>
+      <p>
+        <a href="https://blackspirestudio.itch.io/medieval-pixel-art-asset-free" target="_blank">Medieval Pixel Art (Blackspire Studio)</a><br />
+        <a href="https://ladyliefy.itch.io/olde-tome" target="_blank">Olde Tome (Ladyliefy)</a><br />
+        <a href="https://lyaseek.itch.io/minifvillagers" target="_blank">Mini Villagers (Lyaseek)</a><br />
+        <a href="https://lyaseek.itch.io/miniforcs" target="_blank">Mini Forcs (Lyaseek)</a>
+      </p>
+    </section>
+
+    <section id="screenshots">
+      <h2>Screenshots</h2>
+      <img src="screenshots/1.png" width="300" />
+      <img src="screenshots/2.png" width="300" />
+      <img src="screenshots/3.png" width="300" />
+      <img src="screenshots/4.png" width="300" />
+      <img src="screenshots/5.png" width="300" />
+    </section>
+
+    <section id="trailer">
+      <h2>Game Trailer</h2>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/tSIMgGNBti0?rel=0&autoplay=0" 
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </section>
+
+    <section id="presentations">
+      <h2>Presentations</h2>
+      <ul>
+        <li><a href="postmortem.pdf" target="_blank">Postmortem (2 slides)</a></li>
+        <li><a href="Team 6.pdf" target="_blank">Demo Day Presentation (5 slides)</a></li>
+      </ul>
+    </section>
+
+    <section id="team">
+      <h2>Team Reflection</h2>
+      <p>
+        Our best accomplishment while creating our game would probably be our scripts. We have many different abilities and interactions that required complex programming, but we were able to complete everything modularly and with smooth performance. With a total of 35 distinct scripts, it was impressive how we were able to code everything within our time limit while maintaining performance.<br /><br />
+        If we had another 2 weeks to work on our game, our highest priority would be to expand the main map and add more puzzles. Second, we would add sound effects to enhance gameplay enjoyment. Third, we would introduce new enemy types and add mechanics for players to defeat them using either the environment or newly added attacks.
+      </p>
+    </section>
+
     <script>
       var canvas = document.querySelector("#unity-canvas");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
       function unityShowBanner(msg, type) {
         var warningBanner = document.querySelector("#unity-warning");
         function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+          warningBanner.style.display = warningBanner.children.length ? "block" : "none";
         }
-        var div = document.createElement('div');
+        var div = document.createElement("div");
         div.innerHTML = msg;
         warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        if (type == "error") div.style = "background: red; padding: 10px;";
         else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
+          if (type == "warning") div.style = "background: yellow; padding: 10px;";
+          setTimeout(function () {
             warningBanner.removeChild(div);
             updateBannerVisibility();
           }, 5000);
@@ -65,39 +179,14 @@
         showBanner: unityShowBanner,
       };
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
-      // If you would like all file writes inside Unity Application.persistentDataPath
-      // directory to automatically persist so that the contents are remembered when
-      // the user revisits the site the next time, uncomment the following line:
-      // config.autoSyncPersistentDataPath = true;
-      // This autosyncing is currently not the default behavior to avoid regressing
-      // existing user projects that might rely on the earlier manual
-      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
-      // expected to change.
-
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
+        var meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content = "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+        document.getElementsByTagName("head")[0].appendChild(meta);
         document.querySelector("#unity-container").className = "unity-mobile";
         canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
-
-
       } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
         canvas.style.width = "1400px";
         canvas.style.height = "600px";
       }
@@ -109,19 +198,16 @@
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
+        }).then((unityInstance) => {
+          document.querySelector("#unity-loading-bar").style.display = "none";
+          document.querySelector("#unity-fullscreen-button").onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
       document.body.appendChild(script);
-
     </script>
   </body>
 </html>
