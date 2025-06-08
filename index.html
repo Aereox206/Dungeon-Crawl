@@ -7,6 +7,9 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
     <style>
+      html {
+        scroll-behavior: smooth
+      }
       section {
         padding: 20px;
         max-width: 1000px;
@@ -18,7 +21,6 @@
       }
       img {
         margin: 5px;
-        border: 1px solid #ccc;
       }
       body {
         font-family: sans-serif;
@@ -27,6 +29,26 @@
       }
       #unity-container + * {
         margin-top: 750px;
+      }
+      .slider img {
+        flex: 1 0 100%; 
+        scroll-snap-align: start; 
+        object-fit: cover;
+      }
+      .slider-nav a {
+        width: 0.6rem; 
+        height: 0.6rem; 
+        border-radius: 50%;
+        background-color: #fff; 
+        opacity: 0.75; 
+        transition: opacity ease 250ms;
+      }
+      .slider-nav a:hover {
+        opacity: 1;
+      }
+
+      .slider-nav a.active {
+        opacity: 1;
       }
     </style>
   </head>
@@ -77,10 +99,10 @@
 
     <section id="playtesting">
       <h2>Playtesting Reports</h2>
-      <div>
-        <img src="Screenshots/playtest 1.png" alt="Playtest Report 1" width="300" />
-        <img src="Screenshots/playtest 2.png" alt="Playtest Report 2" width="300" />
-        <img src="Screenshots/playtest 3.png" alt="Final Playtest Report" width="300" />
+      <div id="report-images" style="display: flex; flex-direction: column;">
+        <img src="Screenshots/playtest 1.png" alt="Playtest Report 1" max-width="1000px" />
+        <img src="Screenshots/playtest 2.png" alt="Playtest Report 2" max-width="1000px" />
+        <img src="Screenshots/playtest 3.png" alt="Final Playtest Report" max-width="1000px" />
       </div>
       <p>
         Playtests were conducted in class and at home by friends. In-class playtests gave us feedback in a google form, and at-home playtests gave us direct verbal feedback. 
@@ -103,17 +125,30 @@
         <a href="https://blackspirestudio.itch.io/medieval-pixel-art-asset-free" target="_blank">Medieval Pixel Art (Blackspire Studio)</a><br />
         <a href="https://ladyliefy.itch.io/olde-tome" target="_blank">Olde Tome (Ladyliefy)</a><br />
         <a href="https://lyaseek.itch.io/minifvillagers" target="_blank">Mini Villagers (Lyaseek)</a><br />
-        <a href="https://lyaseek.itch.io/miniforcs" target="_blank">Mini Forcs (Lyaseek)</a>
+        <a href="https://lyaseek.itch.io/miniforcs" target="_blank">Mini Forcs (Lyaseek)</a><br />
+        <a href="https://dyru.itch.io/pixel-ghost-template" target="_blank">Pixel Ghost (Dyru)</a><br />
+        <a href="https://ramenphysics22.itch.io/fire-wisp" target="_blank">Fire Wisp (Ramen)</a>
       </p>
     </section>
 
     <section id="screenshots">
       <h2>Screenshots</h2>
-      <img src="screenshots/1.png" width="300" />
-      <img src="screenshots/2.png" width="300" />
-      <img src="screenshots/3.png" width="300" />
-      <img src="screenshots/4.png" width="300" />
-      <img src="screenshots/5.png" width="300" />
+      <div class="slider-wrapper" style="position: relative;">
+        <div class="slider" style="display: flex; aspect-ratio: 16 / 9; margin: 0 auto; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 0.5rem; scrollbar-width: none;">
+          <img id="screenshot-1" src="screenshots/1.png"/>
+          <img id="screenshot-2" src="screenshots/2.png"/>
+          <img id="screenshot-3" src="screenshots/3.png"/>
+          <img id="screenshot-4" src="screenshots/4.png"/>
+          <img id="screenshot-5" src="screenshots/5.png"/>
+        </div>
+        <div class="slider-nav" style="display: flex; column-gap: 1rem; position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); z-index: 1;">
+          <a class="navItem active" href="#screenshot-1"></a>
+          <a class="navItem" href="#screenshot-2"></a>
+          <a class="navItem" href="#screenshot-3"></a>
+          <a class="navItem" href="#screenshot-4"></a>
+          <a class="navItem" href="#screenshot-5"></a>
+        </div>
+      </div>
     </section>
 
     <section id="trailer">
@@ -144,6 +179,29 @@
     </section>
 
     <script>
+      const navItems = document.querySelectorAll('.navItem')
+      const slider = document.querySelector('.slider');
+
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          resetInterval();
+          e.preventDefault();
+
+          navItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+
+          const targetId = item.getAttribute('href').substring(1);
+          const targetImage = document.getElementById(targetId);
+
+          if (targetImage) {
+            slider.scrollTo({
+              left: targetImage.offsetLeft, 
+              behavior: 'smooth'
+            })
+          }
+        })
+      })
+
       var canvas = document.querySelector("#unity-canvas");
 
       function unityShowBanner(msg, type) {
@@ -208,6 +266,38 @@
         });
       };
       document.body.appendChild(script);
+    </script>
+
+    <script>
+      const images = slider.querySelectorAll('img');
+      let curIndex = 0;
+      let interval = setInterval(slideNext, 4000);
+
+      function slideNext() {
+        let index = 0;
+        navItems.forEach(i => {
+          if (i.classList.contains('active')) {
+            if (curIndex != index) {
+              curIndex = (index + 1) % images.length;
+            }
+            else curIndex = (curIndex + 1) % images.length;
+          }
+          else index++;
+        })
+
+        navItems.forEach(i => i.classList.remove('active'));
+        navItems[curIndex].classList.add('active');
+
+        slider.scrollTo({
+          left: slider.clientWidth * curIndex,
+          behavior: 'smooth'
+        });
+      }
+
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(slideNext, 4000);
+      }
     </script>
   </body>
 </html>
