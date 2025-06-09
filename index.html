@@ -7,6 +7,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <link rel="stylesheet" href="TemplateData/style.css" />
     <style>
+      @font-face {
+        font-family: 'Pixel';
+        src: url('Fonts/Pixel.ttf') format('truetype');
+      }
       html {
         scroll-behavior: smooth
       }
@@ -15,15 +19,27 @@
         max-width: 1000px;
         margin: auto;
       }
+      .header a{
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      .header a:hover{
+        color: grey;
+      }
       h2 {
         border-bottom: 2px solid #ddd;
         padding-bottom: 5px;
+        font-size: 35px;
+      }
+      p {
+        font-size: 18px;
       }
       img {
         margin: 5px;
       }
       body {
-        font-family: sans-serif;
+        font-family: 'Pixel', sans-serif;
         background: #f8f8f8;
         color: #333;
       }
@@ -56,16 +72,17 @@
     <header>
       <nav>
         <ul
-          style="display: flex; gap: 20px; list-style: none; padding: 10px; background: #222; color: white;"
+          class="header" style="display: flex; gap: 25px; list-style: none; padding: 30px; background: #222; color: white; margin-top: 0px; align-items: center;"
         >
-          <li><a href="#description" style="color:white;">Description</a></li>
-          <li><a href="#playtesting" style="color:white;">Playtesting</a></li>
-          <li><a href="#credits" style="color:white;">Credits</a></li>
-          <li><a href="#references" style="color:white;">References</a></li>
-          <li><a href="#screenshots" style="color:white;">Screenshots</a></li>
-          <li><a href="#trailer" style="color:white;">Trailer</a></li>
-          <li><a href="#presentations" style="color:white;">Presentations</a></li>
-          <li><a href="#team" style="color:white;">Team Reflection</a></li>
+          <h1 style="padding: 0; margin: 0; margin-left: 20px; margin-right: 100px;">Dungeon Crawl</h3>
+          <li><a href="#description">Description</a></li>
+          <li><a href="#playtesting">Playtesting</a></li>
+          <li><a href="#credits">Credits</a></li>
+          <li><a href="#references">References</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#trailer">Trailer</a></li>
+          <li><a href="#presentations">Presentations</a></li>
+          <li><a href="#team">Team Reflection</a></li>
         </ul>
       </nav>
     </header>
